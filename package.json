@@ -2,6 +2,13 @@
   "name": "magic-vacation",
   "version": "1.0.0",
   "description": "Личный проект «Таинственный отпуск» от HTML Academy",
+  "author": "Somov Eugene",
+  "license": "ISC",
+  "homepage": "https://github.com/Somov-Eugene/982685-magic-vacation-1#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Somov-Eugene/982685-magic-vacation-1.git"
+  },
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.x",
     "concurrently": "5.1.0",
