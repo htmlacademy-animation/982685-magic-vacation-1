@@ -93,6 +93,15 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.7s ease-out 1.2s,
+              transform 0.7s ease-out 1.2s;
+
+  .active & {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media (min-width: $stop-scaling) {
     width: 509px;
