@@ -1606,7 +1606,7 @@ img {
   line-height: 1.27;
   opacity: 0;
   transform: translateY(1rem);
-  transition: opacity 0.7s ease-out 1.2s, transform 0.7s ease-out 1.2s; }
+  transition: opacity 0.5s ease-out 0.5s, transform 0.5s ease-out 0.5s; }
   .active .intro__message {
     opacity: 1;
     transform: translateY(0); }
@@ -3187,11 +3187,9 @@ img {
     display: block;
     width: 2.3rem;
     height: 2.2rem; }
-  .social-block__toggler:hover,
-  .social-block--active .social-block__toggler {
+  .social-block__toggler:hover {
     color: #a67ee5; }
-    .social-block__toggler:hover::before,
-    .social-block--active .social-block__toggler::before {
+    .social-block__toggler:hover::before {
       transform: translate(-50%, -50%) scale(1.125); }
   .social-block__toggler:focus {
     color: #a67ee5;
