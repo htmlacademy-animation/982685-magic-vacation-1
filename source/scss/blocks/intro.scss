@@ -95,8 +95,8 @@
   line-height: 1.27;
   opacity: 0;
   transform: translateY(1rem);
-  transition: opacity 0.5s ease-out 0.5s,
-              transform 0.5s ease-out 0.5s;
+  transition: opacity 0.5s cubic-bezier(.5,.85,.5,1) 1.2s,
+              transform 0.5s cubic-bezier(.5,.85,.5,1) 1.2s;
 
   .active & {
     opacity: 1;
