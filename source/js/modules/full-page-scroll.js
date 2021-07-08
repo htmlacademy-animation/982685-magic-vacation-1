@@ -3,6 +3,8 @@ import throttle from 'lodash/throttle';
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 2000;
+    this.ACTIVE_TIMEOUT = 100;
+    this.SCREENBG_TIMEOUT = 500;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
@@ -40,12 +42,41 @@ export default class FullPageScroll {
   }
 
   changeVisibilityDisplay() {
-    this.screenElements.forEach((screen) => {
-      screen.classList.add(`screen--hidden`);
-      screen.classList.remove(`active`);
-    });
-    this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
-    window.setTimeout(() => { this.screenElements[this.activeScreen].classList.add(`active`) }, 100);
+    const previousScreen = [...this.screenElements].find((el) => !el.classList.contains(`screen--hidden`));
+    const currentScreen = this.screenElements[this.activeScreen];
+    const backgroundScreen = document.querySelector(`.screen__background`);
+
+    // если кликаем по текущему пункту меню, то выход
+    if (previousScreen === currentScreen) {
+      return;
+    }
+
+    // если переходим с экрана "История" на экран "Призы", то активируем фоновый экран
+    if (previousScreen &&
+        previousScreen.classList.contains(`screen--story`) &&
+        currentScreen.classList.contains(`screen--prizes`)) {
+      backgroundScreen.classList.add(`active`);
+
+      window.setTimeout(() => {
+        previousScreen.classList.remove(`active`);
+        previousScreen.classList.add(`screen--hidden`);
+
+        currentScreen.classList.remove(`screen--hidden`);
+        currentScreen.classList.add(`active`);
+
+        backgroundScreen.classList.remove(`active`);
+      }, this.SCREENBG_TIMEOUT);
+    } else {
+      this.screenElements.forEach((screen) => {
+        screen.classList.remove(`active`);
+        screen.classList.add(`screen--hidden`);
+      });
+
+      currentScreen.classList.remove(`screen--hidden`);
+      window.setTimeout(() => {
+        currentScreen.classList.add(`active`);
+      }, this.ACTIVE_TIMEOUT);
+    }
   }
 
   changeActiveMenuItem() {
