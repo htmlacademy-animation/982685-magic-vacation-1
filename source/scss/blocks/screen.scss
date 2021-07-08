@@ -294,6 +294,22 @@
   }
 }
 
+.screen__background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: $c-dark;
+  transition: height 0.5s linear 0s;
+  z-index: 2;
+
+  &.active {
+    height: 100%;
+  }
+}
+
 .screen--story {
   background-color: $c-dark;
   background-image: url("../img/slide1.jpg"), url("../img/slide2.jpg"), url("../img/slide3.jpg"), url("../img/slide4.jpg");
